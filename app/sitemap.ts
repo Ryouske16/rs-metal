@@ -1,6 +1,10 @@
-export default function sitemap(){
-  const base = "https://example.com"\;
-  const now = new Date();
-  const routes = ["","/services","/capabilities","/process","/projects","/contact"];
-  return routes.map(r => ({ url: base + r, lastModified: now }));
+import { MetadataRoute } from "next";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: "https://rs-metal.vercel.app", // change to your custom domain later
+      lastModified: new Date(),
+    },
+  ];
 }
