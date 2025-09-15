@@ -6,6 +6,11 @@ import Footer from "../components/Footer";
 export const metadata: Metadata = {
   title: "RS Metal — Metal Fabrication & Engineering",
   description: "Precision metal fabrication • CNC • Welding • Bespoke structures",
+  icons:{
+    icon:"/favicon.png"
+  },
+
+  
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
