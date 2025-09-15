@@ -13,3 +13,4 @@ body { @apply bg-metal-900 text-white antialiased; }
 .card { @apply rounded-2xl bg-metal-800/80 border border-white/10 shadow-glow; }
 .section { @apply py-20; }
 .container { @apply max-w-6xl mx-auto px-4; }
+

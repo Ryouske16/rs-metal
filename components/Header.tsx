@@ -5,6 +5,7 @@ import { useState } from "react";
 import Logo from "./Logo";
 
 const links = [
+  { href: "/", label: "Home" }, // 👈 Added Home
   { href: "/services", label: "Services" },
   { href: "/capabilities", label: "Capabilities" },
   { href: "/process", label: "Process" },
@@ -15,24 +16,43 @@ const links = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  return (
-    <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-metal-900/70 border-b border-white/10">
-  <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-20">
-    <Logo />
-    <nav className="hidden md:flex items-center gap-8 text-sm">
-      <a href="/services" className="hover:text-cyan-300">Services</a>
-      <a href="/capabilities" className="hover:text-cyan-300">Capabilities</a>
-      <a href="/process" className="hover:text-cyan-300">Process</a>
-      <a href="/projects" className="hover:text-cyan-300">Projects</a>
-      <a href="/contact" className="hover:text-cyan-300">Contact</a>
-    </nav>
-    <div className="hidden md:block">
-      <a href="/contact" className="px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition">
-        Get a quote
-      </a>
-    </div>
-  </div>
-</header>
 
+  return (
+    <header className="sticky top-0 z-50 border-b border-gray-600 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 shadow-md">
+      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-20">
+        
+        {/* Logo → single homepage link */}
+        <Link href="/" className="relative z-10 flex items-center">
+          <Logo />
+        </Link>
+
+        {/* Navigation */}
+        <nav className="hidden md:flex items-center gap-8 text-sm relative z-10">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`hover:text-accent transition ${
+                pathname === link.href
+                  ? "text-accent font-semibold"
+                  : "text-gray-900"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* CTA button */}
+        <div className="hidden md:block relative z-10">
+          <Link
+            href="/contact"
+            className="px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition"
+          >
+            Your project, our precision.
+          </Link>
+        </div>
+      </div>
+    </header>
   );
 }
