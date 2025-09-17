@@ -1,7 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 export default function Page() {
+  const images = [
+    "/hero-welding.png",
+    "/hero-cnc.png",
+    "/hero-bending.png",
+  ];
+
   return (
     <section className="py-20">
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
@@ -29,16 +40,28 @@ export default function Page() {
           </div>
         </div>
 
-        {/* ✅ Use welding image instead of placeholder */}
+        {/* ✅ Image slider */}
         <div className="rounded-2xl overflow-hidden border border-white/10 shadow-glow">
-          <Image
-            src="/hero-welding.png"
-            alt="Metal fabrication welding sparks"
-            width={560}
-            height={400}
-            className="w-full h-auto object-cover"
-            priority
-          />
+          <Swiper
+            modules={[Autoplay]}
+            autoplay={{ delay: 1500, disableOnInteraction: false }}
+            loop={true}
+            className="w-full h-full"
+          >
+            {images.map((src, i) => (
+              <SwiperSlide key={i}>
+  <div className="w-full h-[400px] relative">
+    <Image
+      src={src}
+      alt={`Hero slide ${i + 1}`}
+      fill
+      className="object-cover"
+      priority={i === 0}
+    />
+  </div>
+</SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>

@@ -1,35 +1,67 @@
-import Button from '@/components/Button'
-import Image from 'next/image'
+"use client"
+import Link from "next/link"
+import Image from "next/image"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Autoplay } from "swiper/modules"
+import "swiper/css"
 
 export default function Hero() {
+  const images = [
+    "/hero-welding.png",
+    "/hero-cnc.png",
+    "/hero-bending.png",
+  ]
+
   return (
-    <section className="section">
-      <div className="container grid md:grid-cols-2 gap-10 items-center">
+    <section className="py-20">
+      <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+        {/* Left side text */}
         <div>
           <h1 className="text-4xl md:text-6xl font-oswald leading-tight">
             Your project, <span className="gradient-text">our precision.</span>
           </h1>
           <p className="mt-5 text-gray-300 max-w-xl">
-            From prototypes to production — CNC cutting, welding, bending and finishing with industry-grade accuracy.
+            CNC cutting, forming, welding and finishing — delivered on time with
+            industrial accuracy.
           </p>
           <div className="mt-8 flex gap-3">
-            <Button href="#contact">Get a quote</Button>
-            <Button href="#services" variant="ghost">Our services</Button>
+            <Link
+              href="/contact"
+              className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition"
+            >
+              Get a quote
+            </Link>
+            <Link
+              href="/services"
+              className="px-5 py-3 rounded-xl bg-white/5 border border-white/10"
+            >
+              Our services
+            </Link>
           </div>
         </div>
 
-        {/* ✅ Replace placeholder with actual image */}
-        <div className="relative">
-          <div className="card p-0 overflow-hidden">
-            <Image
-              src="/hero-welding.png"
-              alt="Metal fabrication welding sparks"
-              width={560}
-              height={400}
-              className="w-full h-auto object-cover"
-              priority
-            />
-          </div>
+        {/* Right side carousel */}
+        <div className="rounded-2xl overflow-hidden border border-white/10 shadow-glow">
+          <Swiper
+            modules={[Autoplay]}
+            autoplay={{ delay: 1500, disableOnInteraction: false }}
+            loop={true}
+            className="w-full h-full"
+          >
+            {images.map((src, i) => (
+              <SwiperSlide key={i}>
+  <div className="w-full h-[400px] relative">
+    <Image
+      src={src}
+      alt={`Hero slide ${i + 1}`}
+      fill
+      className="object-cover"
+      priority={i === 0}
+    />
+  </div>
+</SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>

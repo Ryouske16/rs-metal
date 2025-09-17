@@ -1,6 +1,6 @@
 export const metadata = { title: "Process — RS Metal" };
 const steps = [
-  ["1. Quote", "Upload drawings/brief and receive pricing within 24h."],
+  ["1. Your project, our precison.", "Upload drawings/brief and receive pricing within 24h."],
   ["2. DfM Review", "We optimise for manufacturability and confirm timelines."],
   ["3. Fabrication", "Cutting, forming, welding and finishing to spec."],
   ["4. QC & Delivery", "Dimensional checks and tracked delivery nationwide."],
