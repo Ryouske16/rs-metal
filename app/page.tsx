@@ -89,25 +89,43 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ✅ Why Choose RS Metal */}
-      <section className="py-20 bg-gray-950/50">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-oswald">Why Choose RS Metal</h2>
-          <p className="mt-4 text-gray-400 max-w-3xl">
-            At RS Metal, we don’t just fabricate parts — we help you bring ideas to life with precision, speed,
-            and collaboration. Our approach is designed around what matters most to you:
-          </p>
-          <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((v) => (
-              <div key={v.title} className="card p-6 text-center">
-                <div>{v.icon}</div>
-                <h3 className="mt-4 text-xl font-semibold">{v.title}</h3>
-                <p className="mt-2 text-gray-300">{v.desc}</p>
-              </div>
-            ))}
-          </div>
+      {/* ✅ Why Choose RS Metal with Intro Card */}
+<section className="py-20 bg-gray-950/50">
+  <div className="max-w-6xl mx-auto px-4">
+    {/* Intro Card inside Why Choose */}
+    <div className="mb-12">
+      <div className="p-10 bg-gray-900/70 backdrop-blur-md rounded-2xl shadow-xl text-center border border-white/10">
+        {/* Gradient divider */}
+        <div className="h-[2px] w-32 mx-auto bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 mb-6 rounded-full shadow-[0_0_12px_rgba(59,130,246,0.7)]"></div>
+
+        <p className="text-lg text-gray-300 leading-relaxed">
+          Welcome to RS Metal — where{" "}
+          <span className="gradient-text">advanced machinery</span> meets{" "}
+          <span className="gradient-text">skilled craftsmanship</span>. From cutting and forming to welding and finishing, we deliver{" "}
+          <span className="gradient-text">precision fabrication</span> with reliability and care, ensuring your projects are completed to the highest standards — on time and on budget.
+        </p>
+      </div>
+    </div>
+
+    {/* Why Choose Heading + Description */}
+    <h2 className="text-3xl md:text-4xl font-oswald">Why Choose RS Metal</h2>
+    <p className="mt-4 text-gray-400 max-w-3xl">
+      At RS Metal, we don’t just fabricate parts — we help you bring ideas to life with precision, speed,
+      and collaboration. Our approach is designed around what matters most to you:
+    </p>
+
+    {/* Values Grid */}
+    <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {values.map((v) => (
+        <div key={v.title} className="card p-6 text-center">
+          <div>{v.icon}</div>
+          <h3 className="mt-4 text-xl font-semibold">{v.title}</h3>
+          <p className="mt-2 text-gray-300">{v.desc}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
     </div>
   );
 }
