@@ -1,27 +1,113 @@
+import Image from "next/image";
+
 export const metadata = { title: "Capabilities — RS Metal" };
-export default function CapabilitiesPage(){
-  const stats = [
-    ["Tolerance", "±0.2 mm"],
-    ["Sheet Size", "3000 × 1500 mm"],
-    ["Thickness", "0.9 – 20 mm"],
-    ["Lead Time", "3–7 days"],
+
+export default function CapabilitiesPage() {
+  const capabilities = [
+    {
+      img: "/capabilities/workflow.jpg",
+      title: "Streamlined Workflow",
+      stat: "3–7 days",
+      desc: "Automated nesting, digital job tracking, and efficient scheduling enable us to deliver parts in days, not weeks.",
+    },
+    {
+      img: "/capabilities/precision.jpg",
+      title: "Precision Engineering",
+      stat: "±0.2 mm",
+      desc: "Our CNC machines and digital calibration maintain repeatable accuracy across every batch, no matter the complexity.",
+    },
+    {
+      img: "/capabilities/sheet.jpg",
+      title: "Large Sheet Handling",
+      stat: "3000 × 1500 mm",
+      desc: "Accommodates bigger parts in a single piece, reducing the need for joints or welds.",
+    },
+    {
+      img: "/capabilities/thickness.jpg",
+      title: "Versatile Thickness",
+      stat: "0.9 – 20 mm",
+      desc: "From lightweight prototypes to heavy-duty structures, we cover a wide range of material needs.",
+    },
   ];
+
+  const industries = [
+    {
+      title: "Construction",
+      desc: "Structural components, brackets, and supports built for strength and reliability in demanding environments.",
+    },
+    {
+      title: "Automotive",
+      desc: "Precision parts, mounts, and prototypes to support vehicle design, testing, and custom fabrication needs.",
+    },
+    {
+      title: "Architecture",
+      desc: "Decorative panels, balustrades, and bespoke fittings that balance aesthetics with durability.",
+    },
+    {
+      title: "Industrial Equipment",
+      desc: "Frames, housings, and machine parts manufactured with accuracy to keep operations running smoothly.",
+    },
+    {
+      title: "Prototyping",
+      desc: "Fast-turnaround prototypes that help validate designs before scaling to production.",
+    },
+  ];
+
   return (
-    <section className="py-20">
-      <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-start">
-        <div>
+    <>
+      {/* ✅ Capabilities */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-oswald">Capabilities</h1>
-          <p className="mt-4 text-gray-300 max-w-xl">Industrial capacity with small-batch flexibility across mild steel, stainless, and aluminium.</p>
+          <p className="mt-4 text-gray-300 max-w-2xl">
+            More than just fabrication — our blend of precision, flexibility, and speed ensures your parts
+            exceed expectations, not just meet them.
+          </p>
+
+          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {capabilities.map((c) => (
+              <div key={c.title} className="card p-6 text-center relative">
+                {/* ✅ Mini photo */}
+                <div className="w-full h-28 relative mb-4 rounded-lg overflow-hidden">
+                  <Image
+                    src={c.img}
+                    alt={c.title}
+                    fill
+                    className="object-cover opacity-90"
+                  />
+                </div>
+                {/* ✅ Big stat */}
+                <div className="text-3xl md:text-4xl font-bold gradient-text">{c.stat}</div>
+                {/* ✅ Title + description */}
+                <h3 className="mt-3 text-xl font-semibold">{c.title}</h3>
+                <p className="mt-2 text-gray-300">{c.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          {stats.map(([k,v]) => (
-            <div key={k} className="card p-5">
-              <div className="text-sm text-gray-400">{k}</div>
-              <div className="text-2xl font-semibold gradient-text">{v}</div>
-            </div>
-          ))}
+      </section>
+
+      {/* ✅ Divider */}
+      <div className="border-t border-white/10"></div>
+
+      {/* ✅ Industries We Support */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-oswald">Industries We Support</h2>
+          <p className="mt-4 text-gray-400 max-w-3xl">
+            Our capabilities extend across multiple industries, helping clients turn ideas into durable,
+            high-quality parts with precision and efficiency:
+          </p>
+          <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {industries.map((ind) => (
+              <div key={ind.title} className="card p-6">
+                <h3 className="text-xl font-semibold">{ind.title}</h3>
+                <p className="mt-2 text-gray-300">{ind.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
