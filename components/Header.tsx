@@ -49,7 +49,7 @@ export default function Header() {
             href="/contact"
             className="px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition"
           >
-            Your project, our precision.
+            Build your project.
           </Link>
         </div>
       </div>

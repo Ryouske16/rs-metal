@@ -1,8 +1,11 @@
 import Image from "next/image";
+import { Building2, Car, Landmark, Settings, FlaskConical } from "lucide-react";
 
 export const metadata = { title: "Capabilities — RS Metal" };
 
 export default function CapabilitiesPage() {
+  const gradientId = "cyan-violet";
+
   const capabilities = [
     {
       img: "/capabilities/workflow.jpg",
@@ -34,27 +37,77 @@ export default function CapabilitiesPage() {
     {
       title: "Construction",
       desc: "Structural components, brackets, and supports built for strength and reliability in demanding environments.",
+      icon: (
+        <Building2
+          className="w-10 h-10 mx-auto"
+          stroke={`url(#${gradientId})`}
+          fill={`url(#${gradientId})`}
+          strokeWidth={2}
+        />
+      ),
     },
     {
       title: "Automotive",
       desc: "Precision parts, mounts, and prototypes to support vehicle design, testing, and custom fabrication needs.",
+      icon: (
+        <Car
+          className="w-10 h-10 mx-auto"
+          stroke={`url(#${gradientId})`}
+          fill={`url(#${gradientId})`}
+          strokeWidth={2}
+        />
+      ),
     },
     {
       title: "Architecture",
       desc: "Decorative panels, balustrades, and bespoke fittings that balance aesthetics with durability.",
+      icon: (
+        <Landmark
+          className="w-10 h-10 mx-auto"
+          stroke={`url(#${gradientId})`}
+          fill={`url(#${gradientId})`}
+          strokeWidth={2}
+        />
+      ),
     },
     {
       title: "Industrial Equipment",
       desc: "Frames, housings, and machine parts manufactured with accuracy to keep operations running smoothly.",
+      icon: (
+        <Settings
+          className="w-10 h-10 mx-auto"
+          stroke={`url(#${gradientId})`}
+          fill={`url(#${gradientId})`}
+          strokeWidth={2}
+        />
+      ),
     },
     {
       title: "Prototyping",
       desc: "Fast-turnaround prototypes that help validate designs before scaling to production.",
+      icon: (
+        <FlaskConical
+          className="w-10 h-10 mx-auto"
+          stroke={`url(#${gradientId})`}
+          fill={`url(#${gradientId})`}
+          strokeWidth={2}
+        />
+      ),
     },
   ];
 
   return (
     <>
+      {/* ✅ Global gradient defs (only once per page) */}
+      <svg className="absolute w-0 h-0">
+        <defs>
+          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop stopColor="#22d3ee" offset="0%" />   {/* cyan-400 */}
+            <stop stopColor="#6366f1" offset="100%" /> {/* violet-600 */}
+          </linearGradient>
+        </defs>
+      </svg>
+
       {/* ✅ Capabilities */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4">
@@ -100,7 +153,8 @@ export default function CapabilitiesPage() {
           </p>
           <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {industries.map((ind) => (
-              <div key={ind.title} className="card p-6">
+              <div key={ind.title} className="card p-6 text-center">
+                <div className="mb-4 flex justify-center">{ind.icon}</div>
                 <h3 className="text-xl font-semibold">{ind.title}</h3>
                 <p className="mt-2 text-gray-300">{ind.desc}</p>
               </div>
