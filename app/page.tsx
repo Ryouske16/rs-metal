@@ -17,24 +17,51 @@ import {
   Layers,
 } from "lucide-react";
 
+// ✅ Shared gradient ID
+const gradientId = "cyan-violet";
+
 const values = [
   {
-    icon: <Ruler className="w-10 h-10 mx-auto text-cyan-400" />,
+    icon: (
+      <Ruler
+        className="w-10 h-10 mx-auto"
+        stroke={`url(#${gradientId})`}
+        strokeWidth={2.2}
+      />
+    ),
     title: "Precision First",
     desc: "Every project is manufactured with tolerances down to ±0.2mm, ensuring components fit perfectly the first time, every time.",
   },
   {
-    icon: <Timer className="w-10 h-10 mx-auto text-cyan-400" />,
+    icon: (
+      <Timer
+        className="w-10 h-10 mx-auto"
+        stroke={`url(#${gradientId})`}
+        strokeWidth={2.2}
+      />
+    ),
     title: "Fast Turnarounds",
     desc: "We know deadlines matter. With streamlined workflows, typical lead times range from 3–7 days — without compromising quality.",
   },
   {
-    icon: <Wrench className="w-10 h-10 mx-auto text-cyan-400" />,
+    icon: (
+      <Wrench
+        className="w-10 h-10 mx-auto"
+        stroke={`url(#${gradientId})`}
+        strokeWidth={2.2}
+      />
+    ),
     title: "Flexible Production",
     desc: "From one-off prototypes to small batch runs, we scale to suit your project requirements and budget.",
   },
   {
-    icon: <Handshake className="w-10 h-10 mx-auto text-cyan-400" />,
+    icon: (
+      <Handshake
+        className="w-10 h-10 mx-auto"
+        stroke={`url(#${gradientId})`}
+        strokeWidth={2.2}
+      />
+    ),
     title: "Collaborative Support",
     desc: "Our team provides design input and DfM guidance, helping you avoid costly revisions and making the build process smoother.",
   },
@@ -42,17 +69,35 @@ const values = [
 
 const expertise = [
   {
-    icon: <Scissors className="w-12 h-12 text-cyan-400" />,
+    icon: (
+      <Scissors
+        className="w-12 h-12"
+        stroke={`url(#${gradientId})`}
+        strokeWidth={2.2}
+      />
+    ),
     title: "Precision Cutting",
     desc: "CNC laser and plasma cutting on steel, aluminium, and stainless — delivering clean, accurate parts every time.",
   },
   {
-    icon: <Wrench className="w-12 h-12 text-cyan-400" />,
+    icon: (
+      <Wrench
+        className="w-12 h-12"
+        stroke={`url(#${gradientId})`}
+        strokeWidth={2.2}
+      />
+    ),
     title: "Forming & Welding",
     desc: "Expert bending, forming, and certified MIG/TIG welding for components that demand strength and consistency.",
   },
   {
-    icon: <Layers className="w-12 h-12 text-cyan-400" />,
+    icon: (
+      <Layers
+        className="w-12 h-12"
+        stroke={`url(#${gradientId})`}
+        strokeWidth={2.2}
+      />
+    ),
     title: "Finishing Solutions",
     desc: "Powder coating and assembly services that give your parts the durability and look they need to perform.",
   },
@@ -62,7 +107,17 @@ export default function Page() {
   const images = ["/hero-welding.png", "/hero-cnc.png", "/hero-bending.png"];
 
   return (
-    <div>
+    <div className="relative">
+      {/* ✅ Global Gradient Defs (only needs to be defined once) */}
+      <svg className="absolute w-0 h-0">
+        <defs>
+          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop stopColor="#22d3ee" offset="0%" /> {/* cyan-400 */}
+            <stop stopColor="#6366f1" offset="100%" /> {/* violet-600 */}
+          </linearGradient>
+        </defs>
+      </svg>
+
       {/* ✅ Hero Section */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
@@ -126,8 +181,7 @@ export default function Page() {
               <p className="text-lg text-gray-300 leading-relaxed">
                 Welcome to RS Metal — where{" "}
                 <span className="gradient-text">advanced machinery</span> meets{" "}
-                <span className="gradient-text">skilled craftsmanship</span>.
-                From cutting and forming to welding and finishing, we deliver{" "}
+                <span className="gradient-text">skilled craftsmanship</span>. From cutting and forming to welding and finishing, we deliver{" "}
                 <span className="gradient-text">precision fabrication</span>{" "}
                 with reliability and care, ensuring your projects are completed
                 to the highest standards — on time and on budget.
@@ -146,41 +200,29 @@ export default function Page() {
             </p>
 
             <div className="mt-12 space-y-10">
-  {expertise.map((srv, i) => (
-    <motion.div
-      key={srv.title}
-      className="card p-6 flex items-start gap-4 bg-gray-950/60 border border-white/10 rounded-xl cursor-pointer"
-      initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, delay: i * 0.2 }}
-      viewport={{ once: true, amount: 0.3 }}
-      whileHover="hover"
-    >
-      {/* Icon glows naturally on card hover */}
-      <motion.div
-        className="inline-block"
-        initial={{ scale: 0.5, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5, delay: i * 0.2 }}
-        viewport={{ once: true }}
-        variants={{
-          hover: {
-            scale: 1.2,
-            filter: "drop-shadow(0 0 12px rgba(34,211,238,0.9))",
-          },
-        }}
-      >
-        {srv.icon}
-      </motion.div>
+              {expertise.map((srv, i) => (
+                <motion.div
+                  key={srv.title}
+                  className="card p-6 flex items-start gap-4 bg-gray-950/60 border border-white/10 rounded-xl cursor-pointer group"
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: i * 0.2 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  whileHover={{ scale: 1.05 }} // 🔹 Pop-out
+                >
+                  {/* Icon with glow */}
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"></div>
+                    {srv.icon}
+                  </div>
 
-      <div>
-        <h3 className="text-xl font-semibold">{srv.title}</h3>
-        <p className="mt-2 text-gray-300">{srv.desc}</p>
-      </div>
-    </motion.div>
-  ))}
-</div>
-
+                  <div>
+                    <h3 className="text-xl font-semibold">{srv.title}</h3>
+                    <p className="mt-2 text-gray-300">{srv.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
 
             <Link
               href="/services"
@@ -192,7 +234,7 @@ export default function Page() {
 
           {/* Why Choose RS Metal */}
           <h2 className="text-3xl md:text-4xl font-oswald">
-            Why Choose RS Metal
+            Why Choose RS <span className="gradient-text">Metal</span>
           </h2>
           <p className="mt-4 text-gray-400 max-w-3xl">
             At RS Metal, we don’t just fabricate parts — we help you bring ideas
@@ -201,14 +243,83 @@ export default function Page() {
           </p>
 
           <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((v) => (
-              <div key={v.title} className="card p-6 text-center">
-                <div>{v.icon}</div>
+            {values.map((v, i) => (
+              <motion.div
+                key={v.title}
+                className="card p-6 text-center cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }} // 🔹 Pop-out
+              >
+                {v.icon}
                 <h3 className="mt-4 text-xl font-semibold">{v.title}</h3>
                 <p className="mt-2 text-gray-300">{v.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ✅ Import Your Project Section */}
+      <section className="py-20 bg-gray-950/50">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          {/* Heading with gradient word */}
+          <motion.h2
+            className="text-3xl md:text-4xl font-oswald"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Import Your <span className="gradient-text">Project</span>
+          </motion.h2>
+
+          {/* Description */}
+          <motion.p
+            className="mt-4 text-gray-400 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Already have designs, CAD files, or specifications?  
+            Send them over and we’ll work with you to bring your idea to life —  
+            built with <span className="gradient-text">precision</span> and adapted to your{" "}
+            <span className="gradient-text">preferences</span>.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            className="mt-10 flex justify-center gap-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <Link
+              href="/contact"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition"
+            >
+              Start Your Project
+            </Link>
+            <Link
+              href="/services"
+              className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition"
+            >
+              Explore Services
+            </Link>
+          </motion.div>
+
+          {/* Decorative gradient bar */}
+          <motion.div
+            className="h-[2px] w-40 mx-auto mt-12 bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 rounded-full shadow-[0_0_12px_rgba(59,130,246,0.7)]"
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+            viewport={{ once: true }}
+          />
         </div>
       </section>
     </div>
