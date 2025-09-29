@@ -241,52 +241,52 @@ export default function Page() {
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            {
-              img: "/examples/bracket.jpg",
-              title: "Custom Brackets & Mounts",
-              desc: "Strong, reliable, and made to measure for construction and automotive use.",
-            },
-            {
-              img: "/examples/panel.jpg",
-              title: "Architectural Panels & Screens",
-              desc: "Decorative laser-cut panels and facades that combine durability with design.",
-            },
-            {
-              img: "/examples/machine-part.jpg",
-              title: "Machine Parts & Housings",
-              desc: "Precision components to keep equipment running smoothly and reliably.",
-            },
-            {
-              img: "/examples/furniture.jpg",
-              title: "Furniture & Fixtures",
-              desc: "Stylish, robust frames and fittings that bring ideas into everyday use.",
-            },
-          ].map((item, i) => (
-            <motion.div
-              key={item.title}
-              className="relative group rounded-xl overflow-hidden border border-white/10 cursor-pointer"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
-              viewport={{ once: true, amount: 0.3 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <Image
-                src={item.img}
-                alt={item.title}
-                width={500}
-                height={300}
-                className="object-cover w-full h-56 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-left">
-                <h3 className="text-lg font-semibold text-white">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-200">{item.desc}</p>
-              </div>
-            </motion.div>
-          ))}
+  {
+    img: "/examples/bracket.jpg",
+    title: "Custom Brackets & Mounts",
+    desc: "Strong, reliable, and made to measure for construction and automotive use.",
+  },
+  {
+    img: "/examples/panel.jpg",
+    title: "Architectural Panels & Screens",
+    desc: "Decorative laser-cut panels and facades that combine durability with design.",
+  },
+  {
+    img: "/examples/machine-part.jpg",
+    title: "Machine Parts & Housings",
+    desc: "Precision components to keep equipment running smoothly and reliably.",
+  },
+  {
+    img: "/examples/furniture.jpg",
+    title: "Furniture & Fixtures",
+    desc: "Stylish, robust frames and fittings that bring ideas into everyday use.",
+  },
+].map((item, i) => (
+  <motion.div
+    key={item.title}
+    className="relative group rounded-xl overflow-hidden border border-white/10 cursor-pointer"
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: i * 0.2 }}
+    viewport={{ once: true, amount: 0.3 }}
+    whileHover={{ scale: 1.05 }}
+  >
+    <Link href="/services#what-we-build" className="block">
+      <Image
+        src={item.img}
+        alt={item.title}
+        width={500}
+        height={300}
+        className="object-cover w-full h-56 group-hover:scale-105 transition-transform duration-500"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+      <div className="absolute bottom-4 left-4 right-4 text-left">
+        <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+        <p className="text-sm text-gray-200">{item.desc}</p>
+      </div>
+    </Link>
+  </motion.div>
+))}
         </div>
       </section>
 
