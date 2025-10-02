@@ -62,7 +62,7 @@ const services = [
   },
   {
     title: "CAD/CAM",
-    desc: "Design support and DfM to accelerate your build.",
+    desc: "Design support and DfM (Design for Manufacturing) to accelerate your build.",
     icon: (
       <Cpu
         className="w-10 h-10"
