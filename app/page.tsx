@@ -142,10 +142,10 @@ export default function Page() {
                 Your project, our precision.
               </Link>
               <Link
-                href="/services"
+                href="/process"
                 className="px-5 py-3 rounded-xl bg-white/5 border border-white/10"
               >
-                Our services
+                Our process
               </Link>
             </div>
           </motion.div>
