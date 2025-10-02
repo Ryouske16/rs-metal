@@ -374,60 +374,55 @@ export default function Page() {
       </section>
 
       {/* ✅ Import Your Project Section */}
-      <section className="py-20 bg-gray-950/50">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <motion.h2
-            className="text-3xl md:text-4xl font-oswald"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Import Your <span className="gradient-text">Project</span>
-          </motion.h2>
-          <motion.p
-            className="mt-4 text-gray-400 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Already have designs, CAD files, or specifications? Send them over
-            and we’ll work with you to bring your idea to life — built with{" "}
-            <span className="gradient-text">precision</span> and adapted to your{" "}
-            <span className="gradient-text">preferences</span>.
-          </motion.p>
+<section className="py-20 bg-gray-950/50">
+  <div className="max-w-6xl mx-auto px-4 text-center">
+    <motion.h2
+      className="text-3xl md:text-4xl font-oswald"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      Import Your <span className="gradient-text">Project</span>
+    </motion.h2>
+    <motion.p
+      className="mt-4 text-gray-400 max-w-3xl mx-auto"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      viewport={{ once: true }}
+    >
+      Already have designs, CAD files, or specifications? Send them over
+      and we’ll work with you to bring your idea to life — built with{" "}
+      <span className="gradient-text">precision</span> and adapted to your{" "}
+      <span className="gradient-text">preferences</span>.
+    </motion.p>
 
-          <motion.div
-            className="mt-10 flex justify-center gap-4"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <Link
-              href="/contact"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition"
-            >
-              Start Your Project
-            </Link>
-            <Link
-              href="/services"
-              className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition"
-            >
-              Explore Services
-            </Link>
-          </motion.div>
+    <motion.div
+      className="mt-10 flex justify-center"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      viewport={{ once: true }}
+    >
+      <Link
+        href="/contact"
+        className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition"
+      >
+        Start Your Project
+      </Link>
+    </motion.div>
 
-          <motion.div
-            className="h-[2px] w-40 mx-auto mt-12 bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 rounded-full shadow-[0_0_12px_rgba(59,130,246,0.7)]"
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-            viewport={{ once: true }}
-          />
-        </div>
-      </section>
-    </div>
-  );
+    <motion.div
+      className="h-[2px] w-40 mx-auto mt-12 bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 rounded-full shadow-[0_0_12px_rgba(59,130,246,0.7)]"
+      initial={{ opacity: 0, scaleX: 0 }}
+      whileInView={{ opacity: 1, scaleX: 1 }}
+      transition={{ duration: 0.7, delay: 0.6 }}
+      viewport={{ once: true }}
+    />
+  </div>
+</section>
+</div> 
+); 
+
 }
