@@ -9,7 +9,6 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -18,12 +17,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    // 👇 Alias support
-    "baseUrl": ".",
+    "baseUrl": ".", // 👈 tells TS the project root
     "paths": {
       "@/*": [
         "*"
-      ]
+      ] // 👈 enables @ alias (so '@/components' works)
     },
     "plugins": [
       {
@@ -32,9 +30,9 @@
     ]
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "next-env.d.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": [
