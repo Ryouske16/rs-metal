@@ -8,9 +8,21 @@ export const metadata: Metadata = {
   description:
     "Precision metal fabrication • CNC • Welding • Bespoke structures",
   icons: {
-    icon: "/favicon.ico", // fallback
-    shortcut: "/favicon.ico",
-    apple: "/favicon.png", // for iOS/Apple devices
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+      { url: "/favicon.png", sizes: "180x180", type: "image/png" },
+    ],
+    apple: "/favicon.png", // iOS home screen icon
+  },
+  manifest: "/site.webmanifest", // for Android PWA / SEO
+  themeColor: "#000000",
+  openGraph: {
+    title: "RS Metal — Metal Fabrication & Engineering",
+    description:
+      "Precision metal fabrication • CNC • Welding • Bespoke structures in London.",
+    images: ["/favicon.png"], // fallback preview image
+    url: "https://www.rsmetal.co.uk",
+    type: "website",
   },
 };
 
@@ -21,12 +33,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        {/* Extra manual link tags for better Google recognition */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
-      </head>
       <body>
         <div className="min-h-screen flex flex-col bg-metal-sheen">
           <Header />
