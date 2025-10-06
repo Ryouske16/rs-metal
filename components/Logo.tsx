@@ -1,15 +1,18 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Logo() {
   return (
+    <div className="flex items-center">
       <Image
-        src="/logo.png"
-        alt="RS Metal logo"
-        width={160}
-        height={40}
+        src="/logo.png" // ✅ Replace with your actual file path
+        alt="RS Metal Logo"
+        width={200}  // increased width
+        height={90}  // proportional height
         priority
-        className="w-auto h-auto object-contain translate-y-3" 
+        className="object-contain w-36 md:w-44 lg:w-52 mt-6"
       />
+    </div>
   );
 }

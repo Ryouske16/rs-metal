@@ -55,23 +55,64 @@ export default function Footer() {
         </motion.div>
 
         {/* ✅ Contact Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <h4 className="text-lg font-semibold mb-3">Contact Us</h4>
-          <p className="text-gray-400 text-sm mb-4">
-            Have a project or question? Reach out and our team will get back to you.
-          </p>
-          <Link
-            href="mailto:info@rsmetal.co.uk"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition"
-          >
-            <Mail className="w-5 h-5" />
-            info@rsmetal.co.uk
-          </Link>
-        </motion.div>
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.4 }}
+>
+  <h4 className="text-lg font-semibold mb-3">Contact Us</h4>
+  <p className="text-gray-400 text-sm mb-4">
+    Have a project or question? Reach out — we’ll respond promptly.
+  </p>
+
+  {/* 📞 Phone Numbers */}
+          <div className="space-y-1 text-sm font-medium mb-6">
+            <p>
+              📞{" "}
+              <a
+                href="tel:+447523907497"
+                className="gradient-text hover:opacity-80 transition"
+              >
+                +44 7523 907497
+              </a>
+            </p>
+            <p>
+              📞{" "}
+              <a
+                href="tel:07403040313"
+                className="gradient-text hover:opacity-80 transition"
+              >
+                07403 040313
+              </a>
+            </p>
+            <p>
+              📞{" "}
+              <a
+                href="tel:+447380828761"
+                className="gradient-text hover:opacity-80 transition"
+              >
+                +44 7380 828761
+              </a>
+            </p>
+          </div>
+
+  {/* 📧 Emails */}
+  <div className="flex flex-col gap-3">
+    <a
+      href="mailto:info@rsmetal.co.uk"
+      className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition text-center"
+    >
+      info@rsmetal.co.uk
+    </a>
+    <a
+      href="mailto:rsmetalfabrications@gmail.com"
+      className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition text-center"
+    >
+      rsmetalfabrications@gmail.com
+    </a>
+  </div>
+</motion.div>
+
       </div>
 
       {/* ✅ Bottom Bar */}
