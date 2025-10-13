@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title:
     "Precision Metal Fabrication in London | RS Metal — CNC, Welding & Engineering Solutions",
   description:
-    "RS Metal provides precision metal fabrication in London — specialising in CNC cutting, welding, and bespoke engineering solutions with fast turnaround.",
+    "RS Metal provides precision metal fabrication in London, specialising in CNC cutting, welding, and bespoke engineering solutions with fast turnaround.",
   openGraph: {
     title:
       "Precision Metal Fabrication in London | RS Metal — CNC, Welding & Engineering Solutions",

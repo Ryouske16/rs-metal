@@ -41,7 +41,7 @@ const values = [
       />
     ),
     title: "Fast Turnarounds",
-    desc: "We know deadlines matter. With streamlined workflows, typical lead times range from 3–7 days — without compromising quality.",
+    desc: "We know deadlines matter. With streamlined workflows, typical lead times range from 3–7 days without compromising quality.",
   },
   {
     icon: (
@@ -77,7 +77,7 @@ const expertise = [
       />
     ),
     title: "Precision Cutting",
-    desc: "CNC laser and plasma cutting on steel, aluminium, and stainless — delivering clean, accurate parts every time.",
+    desc: "CNC laser and plasma cutting on steel, aluminium, and stainless delivering clean, accurate parts every time.",
   },
   {
     icon: (
@@ -131,7 +131,7 @@ export default function Page() {
               Precision <span className="gradient-text">Metal</span> Fabrication
             </h1>
             <p className="mt-5 text-gray-300 max-w-xl">
-              CNC cutting, forming, welding and finishing — delivered on time
+              CNC cutting, forming, welding and finishing delivered on time
               with industrial accuracy.
             </p>
             <div className="mt-8 flex gap-3">
@@ -205,13 +205,13 @@ export default function Page() {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            Welcome to RS Metal — where{" "}
+            Welcome to RS Metal where{" "}
             <span className="gradient-text">advanced machinery</span> meets{" "}
             <span className="gradient-text">skilled craftsmanship</span>. From
             cutting and forming to welding and finishing, we deliver{" "}
             <span className="gradient-text">precision fabrication</span> with
             reliability and care, ensuring your projects are completed to the
-            highest standards — on time and on budget.
+            highest standards on time and on budget.
           </motion.p>
         </div>
       </motion.div>
@@ -349,7 +349,7 @@ export default function Page() {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          At RS Metal, we don’t just fabricate parts — we help you bring ideas
+          At RS Metal, we don’t just fabricate parts we help you bring ideas
           to life with precision, speed, and collaboration. Our approach is
           designed around what matters most to you:
         </motion.p>
@@ -393,7 +393,7 @@ export default function Page() {
       viewport={{ once: true }}
     >
       Already have designs, CAD files, or specifications? Send them over
-      and we’ll work with you to bring your idea to life — built with{" "}
+      and we’ll work with you to bring your idea to life built with{" "}
       <span className="gradient-text">precision</span> and adapted to your{" "}
       <span className="gradient-text">preferences</span>.
     </motion.p>

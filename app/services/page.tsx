@@ -14,7 +14,7 @@ import {
 
 const gradientId = "cyan-violet";
 
-// ✅ Services list with proper gradient stroke
+// ✅ Services list
 const services = [
   {
     title: "CNC Laser/Plasma Cutting",
@@ -128,6 +128,30 @@ const categories = [
   },
 ];
 
+// ✅ Materials
+const materials = [
+  {
+    img: "/materials/mild.jpg",
+    title: "Mild Steel",
+    desc: "Strong, affordable, and widely used for structural applications.",
+  },
+  {
+    img: "/materials/stainless.jpg",
+    title: "Stainless Steel",
+    desc: "Corrosion-resistant and hygienic, ideal for food and medical use.",
+  },
+  {
+    img: "/materials/aluminium.jpg",
+    title: "Aluminium",
+    desc: "Lightweight yet strong, perfect for aerospace and transport.",
+  },
+  {
+    img: "/materials/brass.jpg",
+    title: "Brass",
+    desc: "Decorative and durable, great for fittings and architectural use.",
+  },
+];
+
 export default function ServicesPage() {
   return (
     <section className="py-20 bg-gray-950 relative">
@@ -142,7 +166,7 @@ export default function ServicesPage() {
       </svg>
 
       <div className="max-w-6xl mx-auto px-4">
-        {/* ✅ Our Services Heading */}
+        {/* ✅ Our Services */}
         <motion.h1
           className="text-3xl md:text-5xl font-oswald text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -181,77 +205,128 @@ export default function ServicesPage() {
         </div>
 
         {/* ✅ Divider */}
-<motion.div
-  className="h-[2px] w-40 mx-auto my-20 bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 rounded-full shadow-[0_0_12px_rgba(59,130,246,0.7)]"
-  initial={{ opacity: 0, scaleX: 0 }}
-  whileInView={{ opacity: 1, scaleX: 1 }}
-  transition={{ duration: 0.7 }}
-  viewport={{ once: true }}
-/>
+        <motion.div
+          className="h-[2px] w-40 mx-auto my-20 bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 rounded-full shadow-[0_0_12px_rgba(59,130,246,0.7)]"
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        />
 
-{/* ✅ What We Build Section with Anchor */}
-<section id="what-we-build">
-  <motion.h2
-    className="text-3xl md:text-5xl font-oswald text-center"
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-  >
-    What We <span className="gradient-text">Build</span>
-  </motion.h2>
-  <motion.p
-    className="mt-4 text-gray-400 text-center max-w-2xl mx-auto"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: 0.2 }}
-  >
-    From prototypes to finished products — here’s a closer look at the
-    projects we create with precision and care.
-  </motion.p>
+        {/* ✅ What We Build */}
+        <section id="what-we-build">
+          <motion.h2
+            className="text-3xl md:text-5xl font-oswald text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            What We <span className="gradient-text">Build</span>
+          </motion.h2>
+          <motion.p
+            className="mt-4 text-gray-400 text-center max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            From prototypes to finished products, here’s a closer look at the
+            projects we create with precision and care.
+          </motion.p>
 
-        {/* ✅ Categories Deep Dive */}
-        <div className="mt-16 space-y-20">
-          {categories.map((cat, i) => (
-            <motion.div
-              key={cat.title}
-              className={`grid md:grid-cols-2 gap-10 items-center ${
-                i % 2 === 1 ? "md:flex-row-reverse" : ""
-              }`}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
-              viewport={{ once: true }}
-            >
-              {/* Image */}
-              <div className="relative overflow-hidden rounded-xl group">
-                <Image
-                  src={cat.img}
-                  alt={cat.title}
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-72 group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
-                <h3 className="absolute bottom-4 left-4 text-xl font-semibold text-white">
-                  {cat.title}
-                </h3>
-              </div>
+          {/* ✅ Categories */}
+          <div className="mt-16 space-y-20">
+            {categories.map((cat, i) => (
+              <motion.div
+                key={cat.title}
+                className={`grid md:grid-cols-2 gap-10 items-center ${
+                  i % 2 === 1 ? "md:flex-row-reverse" : ""
+                }`}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="relative overflow-hidden rounded-xl group">
+                  <Image
+                    src={cat.img}
+                    alt={cat.title}
+                    width={600}
+                    height={400}
+                    className="object-cover w-full h-72 group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+                  <h3 className="absolute bottom-4 left-4 text-xl font-semibold text-white">
+                    {cat.title}
+                  </h3>
+                </div>
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-semibold mb-4 gradient-text">
+                    {cat.title}
+                  </h2>
+                  <p className="text-gray-300 mb-4">{cat.desc}</p>
+                  <ul className="list-disc list-inside text-gray-400 space-y-2">
+                    {cat.bullets.map((point, idx) => (
+                      <li key={idx}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
-              {/* Text Content */}
-              <div>
-                <h2 className="text-2xl md:text-3xl font-semibold mb-4 gradient-text">
-                  {cat.title}
-                </h2>
-                <p className="text-gray-300 mb-4">{cat.desc}</p>
-                <ul className="list-disc list-inside text-gray-400 space-y-2">
-                  {cat.bullets.map((point, idx) => (
-                    <li key={idx}>{point}</li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {/* ✅ Divider */}
+        <motion.div
+          className="h-[2px] w-40 mx-auto my-20 bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 rounded-full shadow-[0_0_12px_rgba(59,130,246,0.7)]"
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        />
+
+        {/* ✅ Materials */}
+        <section id="materials">
+          <motion.h2
+            className="text-3xl md:text-5xl font-oswald text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Materials We <span className="gradient-text">Work With</span>
+          </motion.h2>
+          <motion.p
+            className="mt-4 text-gray-400 text-center max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Versatile fabrication across a range of metals to match your project needs.
+          </motion.p>
+
+          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {materials.map((mat, i) => (
+              <motion.div
+                key={mat.title}
+                className="card p-6 bg-white/5 border border-white/10 rounded-xl shadow-glow hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] transition-all"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden">
+                  <Image
+                    src={mat.img}
+                    alt={mat.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{mat.title}</h3>
+                <p className="text-gray-300">{mat.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </section>
 
         {/* ✅ Final CTA */}

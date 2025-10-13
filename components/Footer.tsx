@@ -7,7 +7,8 @@ import { Mail } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="mt-20 bg-gray-950 border-t border-white/10">
-      <div className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {/* ✅ Adjusted grid spacing */}
+      <div className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-[1.4fr_1fr_1.4fr] gap-6 lg:gap-10 items-start">
         {/* ✅ Brand Info */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -18,7 +19,7 @@ export default function Footer() {
             <span className="gradient-text">RS Metal</span>
           </h3>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Precision metal fabrication services in London — combining advanced
+            Precision metal fabrication services in London, combining advanced
             CNC technology with craftsmanship for projects of any scale.
           </p>
         </motion.div>
@@ -28,6 +29,7 @@ export default function Footer() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          className="mx-auto"
         >
           <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
           <ul className="space-y-2 text-gray-400 text-sm">
@@ -37,7 +39,10 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/capabilities" className="hover:text-cyan-400 transition">
+              <Link
+                href="/capabilities"
+                className="hover:text-cyan-400 transition"
+              >
                 Capabilities
               </Link>
             </li>
@@ -55,17 +60,17 @@ export default function Footer() {
         </motion.div>
 
         {/* ✅ Contact Section */}
-<motion.div
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: 0.4 }}
->
-  <h4 className="text-lg font-semibold mb-3">Contact Us</h4>
-  <p className="text-gray-400 text-sm mb-4">
-    Have a project or question? Reach out — we’ll respond promptly.
-  </p>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <h4 className="text-lg font-semibold mb-3">Contact Us</h4>
+          <p className="text-gray-400 text-sm mb-4">
+            Have a project or question? Reach out, we’ll respond promptly.
+          </p>
 
-  {/* 📞 Phone Numbers */}
+          {/* 📞 Phone Numbers */}
           <div className="space-y-1 text-sm font-medium mb-6">
             <p>
               📞{" "}
@@ -82,7 +87,7 @@ export default function Footer() {
                 href="tel:07403040313"
                 className="gradient-text hover:opacity-80 transition"
               >
-                07403 040313
+                +44 7403 040313
               </a>
             </p>
             <p>
@@ -96,23 +101,22 @@ export default function Footer() {
             </p>
           </div>
 
-  {/* 📧 Emails */}
-  <div className="flex flex-col gap-3">
-    <a
-      href="mailto:info@rsmetal.co.uk"
-      className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition text-center"
-    >
-      info@rsmetal.co.uk
-    </a>
-    <a
-      href="mailto:rsmetalfabrications@gmail.com"
-      className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition text-center"
-    >
-      rsmetalfabrications@gmail.com
-    </a>
-  </div>
-</motion.div>
-
+          {/* 📧 Emails */}
+          <div className="flex flex-col gap-3">
+            <a
+              href="mailto:info@rsmetal.co.uk"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition text-center"
+            >
+              info@rsmetal.co.uk
+            </a>
+            <a
+              href="mailto:rsmetalfabrications@gmail.com"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition text-center"
+            >
+              rsmetalfabrications@gmail.com
+            </a>
+          </div>
+        </motion.div>
       </div>
 
       {/* ✅ Bottom Bar */}

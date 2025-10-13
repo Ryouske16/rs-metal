@@ -24,7 +24,7 @@ export default function ContactPage() {
             Contact <span className="gradient-text">RS Metal</span>
           </h2>
           <p className="text-gray-400 text-sm mb-6 max-w-2xl">
-            Whether you have drawings, project details, or just an idea — reach out to us anytime. Our team will get back to you promptly.
+            Whether you have drawings, project details, or just an idea, reach out to us anytime. Our team will get back to you promptly.
           </p>
 
           {/* 📞 Phone Numbers */}
@@ -44,7 +44,7 @@ export default function ContactPage() {
                 href="tel:07403040313"
                 className="gradient-text hover:opacity-80 transition"
               >
-                07403 040313
+                +44 7403 040313
               </a>
             </p>
             <p>

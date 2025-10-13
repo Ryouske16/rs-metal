@@ -21,7 +21,7 @@ export default function Hero() {
             Your project, <span className="gradient-text">our precision.</span>
           </h1>
           <p className="mt-5 text-gray-300 max-w-xl">
-            CNC cutting, forming, welding and finishing — delivered on time with
+            CNC cutting, forming, welding and finishing delivered on time with
             industrial accuracy.
           </p>
           <div className="mt-8 flex gap-3">

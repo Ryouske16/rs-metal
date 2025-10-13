@@ -136,7 +136,7 @@ export default function Page() {
             Precision <span className="gradient-text">Metal</span> Fabrication
           </h1>
           <p className="mt-5 text-gray-300 max-w-xl">
-            CNC cutting, forming, welding and finishing — delivered on time with industrial accuracy.
+            CNC cutting, forming, welding and finishing, delivered on time with industrial accuracy.
           </p>
           <div className="mt-8 flex gap-3">
             <Link href="/contact" className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-black font-semibold hover:opacity-90 transition">Get a quote</Link>
