@@ -1,6 +1,5 @@
 import BlogPageClient from "./BlogPageClient";
 
-
 export const metadata = {
   title: "Blog — RS Metal",
   description:

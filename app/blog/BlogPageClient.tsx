@@ -5,39 +5,84 @@ import { motion } from "framer-motion";
 
 const posts = [
   {
-    title: "How to Prepare CAD Drawings",
-    desc: "Tips on exporting DXF/DWG files for fabrication-ready accuracy.",
+    title: "How to Prepare CAD Drawings for Metal Fabrication",
+    desc: "Learn how to prepare accurate DXF/DWG files and avoid common design mistakes before fabrication.",
     slug: "cad-preparation",
+    image: "/images/cad-guide.jpg", // optional — place in public/images
   },
   {
-    title: "Laser vs Plasma Cutting",
-    desc: "Understand the pros and cons to choose the right cutting method.",
+    title: "Laser vs Plasma Cutting: Which Should You Choose?",
+    desc: "Understand the pros, cons, and ideal use cases for both cutting methods.",
     slug: "laser-vs-plasma",
+    image: "/images/laser-plasma.jpg",
   },
 ];
 
 export default function BlogPageClient() {
   return (
     <section className="py-20 max-w-6xl mx-auto px-4">
+      {/* ✅ Page Title */}
       <motion.h1
-        className="text-3xl md:text-5xl font-oswald text-center mb-12"
+        className="text-4xl md:text-6xl font-oswald text-center mb-4"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        RS Metal <span className="gradient-text">Blog</span>
+        <span className="gradient-text">Insights & Guides</span>
       </motion.h1>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        {posts.map((post) => (
-          <Link
+      <motion.p
+        className="text-gray-400 text-center max-w-2xl mx-auto mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        Explore RS Metal’s latest articles on fabrication, CNC design, and modern manufacturing methods.
+        Learn how to design smarter, cut cleaner, and build stronger.
+      </motion.p>
+
+      {/* ✅ Blog Cards Grid */}
+      <div className="grid md:grid-cols-2 gap-10">
+        {posts.map((post, i) => (
+          <motion.div
             key={post.slug}
-            href={`/blog/${post.slug}`}
-            className="block p-6 rounded-xl bg-white/5 border border-white/10 shadow-glow hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] transition-all"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
           >
-            <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-            <p className="text-gray-400">{post.desc}</p>
-          </Link>
+            <Link
+              href={`/blog/${post.slug}`}
+              className="group block overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-gray-900/70 to-gray-950 hover:shadow-[0_0_35px_rgba(56,189,248,0.25)] transition-all"
+            >
+              {/* ✅ Image Header */}
+              {post.image && (
+                <div className="overflow-hidden relative h-56 w-full">
+                  <motion.img
+                    src={post.image}
+                    alt={post.title}
+                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-transparent to-transparent" />
+                </div>
+              )}
+
+              {/* ✅ Text Section */}
+              <div className="p-6 space-y-3">
+                <h3 className="text-2xl font-semibold gradient-text group-hover:opacity-90 transition">
+                  {post.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {post.desc}
+                </p>
+                <p className="text-sm mt-3 font-semibold text-cyan-400 group-hover:text-blue-400 transition">
+                  Read More →
+                </p>
+              </div>
+            </Link>
+          </motion.div>
         ))}
       </div>
     </section>
