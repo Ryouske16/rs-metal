@@ -1,54 +1,91 @@
-import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
+import { connectToDatabase } from "../../../lib/mongodb";
+import Contact from "../../../models/Contact";
+import nodemailer from "nodemailer";
+import { put } from "@vercel/blob"; // ✅ Vercel Blob upload
 
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
+    const name = formData.get("name")?.toString() || "Anonymous";
+    const email = formData.get("email")?.toString() || "No email provided";
+    const phone = formData.get("phone")?.toString() || "Not provided";
+    const message = formData.get("message")?.toString() || "No message";
+    const file = formData.get("file") as File | null;
 
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const phone = formData.get("phone") as string;
-    const message = formData.get("message") as string;
-    const files = formData.getAll("projectFiles") as File[];
+    console.log("🗂️ File received:", file ? file.name : "No file");
 
+    let fileUrl = "";
+    if (file) {
+      // ✅ Convert file to buffer for upload
+      const arrayBuffer = await file.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+
+      // ✅ Upload to Vercel Blob (public by default)
+      const blob = await put(`metal_fabrication_contacts/${file.name}`, buffer, {
+        access: "public", // 👈 ensures viewable public link
+      });
+
+      fileUrl = blob.url;
+      console.log("✅ Uploaded to Vercel Blob:", fileUrl);
+    }
+
+    // ✅ Save contact to MongoDB
+    await connectToDatabase();
+    const contact = await Contact.create({
+      name,
+      email,
+      phone,
+      message,
+      fileUrl,
+    });
+
+    console.log("📦 Saved contact:", contact);
+
+    // ✅ Setup Titan Email
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com", // or your hostinger SMTP
-      port: 587,
-      secure: false,
+      host: process.env.TITAN_SMTP_HOST || "smtp.titan.email",
+      port: Number(process.env.TITAN_SMTP_PORT) || 465,
+      secure: true,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: process.env.TITAN_EMAIL,
+        pass: process.env.TITAN_PASS,
       },
     });
 
-    const attachments =
-      files?.length > 0
-        ? await Promise.all(
-            files.map(async (file) => ({
-              filename: file.name,
-              content: Buffer.from(await file.arrayBuffer()),
-            }))
-          )
-        : [];
+    // ✅ Email HTML
+    const emailHtml = `
+      <div style="font-family: Arial, sans-serif; color: #333;">
+        <h2>New Client Contact Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+        ${
+          fileUrl
+            ? `<p><strong>Uploaded File:</strong> <a href="${fileUrl}" target="_blank">View File</a></p>`
+            : "<p><em>No file uploaded</em></p>"
+        }
+      </div>
+    `;
 
+    // ✅ Send email to Titan inbox
     await transporter.sendMail({
-      from: `"RS Metal Website" <${process.env.SMTP_USER}>`,
-      to: "info@rsmetal.co.uk",
-      subject: `New message from ${name}`,
-      text: `
-Name: ${name}
-Email: ${email}
-Phone: ${phone || "N/A"}
-
-Message:
-${message}
-      `,
-      attachments,
+      from: `"RS Metal Fabrication" <${process.env.TITAN_EMAIL}>`,
+      to: process.env.TITAN_EMAIL,
+      subject: "New Client Contact Submission",
+      html: emailHtml,
     });
 
+    console.log("📧 Email sent successfully to Titan inbox!");
+
     return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error("Email send error:", err);
-    return NextResponse.json({ success: false }, { status: 500 });
+  } catch (error) {
+    console.error("❌ Error processing contact form:", error);
+    return NextResponse.json(
+      { success: false, error: "Failed to save or send message" },
+      { status: 500 }
+    );
   }
 }
