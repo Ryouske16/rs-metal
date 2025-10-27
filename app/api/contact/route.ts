@@ -21,9 +21,15 @@ export async function POST(req: Request) {
       const arrayBuffer = await file.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
 
-      // ✅ Upload to Vercel Blob (public by default)
-      const blob = await put(`metal_fabrication_contacts/${file.name}`, buffer, {
-        access: "public", // 👈 ensures viewable public link
+      // ✅ Create a unique filename (timestamp + original name)
+      const safeFileName = file.name.replace(/\s+/g, "_");
+      const uniqueFileName = `metal_fabrication_contacts/${Date.now()}-${safeFileName}`;
+
+      // ✅ Upload to Vercel Blob (public and unique)
+      const blob = await put(uniqueFileName, buffer, {
+        access: "public", // 👈 ensures viewable link
+        token: process.env.BLOB_READ_WRITE_TOKEN, // 👈 secure upload
+        addRandomSuffix: true, // 👈 prevents overwrite conflicts
       });
 
       fileUrl = blob.url;
@@ -64,7 +70,7 @@ export async function POST(req: Request) {
         <p>${message}</p>
         ${
           fileUrl
-            ? `<p><strong>Uploaded File:</strong> <a href="${fileUrl}" target="_blank">View File</a></p>`
+            ? `<p><strong>Uploaded File:</strong> <a href="${fileUrl}" target="_blank" rel="noopener noreferrer">View File</a></p>`
             : "<p><em>No file uploaded</em></p>"
         }
       </div>
