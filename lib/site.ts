@@ -14,7 +14,7 @@ export const siteConfig = {
     email2: "rsmetalfabrications@gmail.com",
   },
 
-  address: "Unit 3, Example Industrial Estate, London, UK", // update if you want this public
+  address: "London, UK", // update if you want this public
   keywords: [
     "metal fabrication",
     "welding",
